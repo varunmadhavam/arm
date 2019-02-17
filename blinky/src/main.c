@@ -23,7 +23,7 @@ delay(50000);
 while(1)
     {
         *GPIOA_BSRR=0x0020;
-        delay(50000);
+        delay(500000);
         *GPIOA_BRR=0x0020;
         delay(500000);    
     }
