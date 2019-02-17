@@ -1,0 +1,52 @@
+https://www.st.com/content/ccc/resource/technical/document/user_manual/group1/5e/a5/b2/30/af/d4/45/d0/DM00452640/files/DM00452640.pdf/jcr:content/translations/en.DM00452640.pdf
+LD4 USER: this green LED is a user LED connected to Arduino signal D13
+corresponding to STM32 I/O PA5. To light the LED a high-logic state ‘1’ has to be
+written in the corresponding GPIO. A transistor is used to drive the LED when the I/O
+voltage is 1.8 V. LD4 consumption does not impact the VDD STM32 power
+measurement, since LD4 is isolated from it.
+
+GPIOA_MODER=0x00000400;
+GPIOA_OTYPER=0x0000;
+GPIOA_OSPEEDR=0x00000000;
+GPIOA_PUPDR=0x00000000;
+GPIOA_BSRR=0x00000010;
+GPIOA_BSRR=0x01000000;
+
+GPIOA_MODER   = 0x50000000
+GPIOA_OTYPER  = 0x50000004
+GPIOA_OSPEEDR = 0x50000008
+GPIOA_PUPDR   = 0x5000000C
+GPIOA_BSRR    = 0x50000018
+
+target extended-remote
+
+typedef struct
+{
+  __IO uint32_t MODER;        
+  __IO uint16_t OTYPER;       
+  uint16_t RESERVED0;         
+  __IO uint32_t OSPEEDR;      
+  __IO uint32_t PUPDR;        
+  __IO uint16_t IDR;          
+  uint16_t RESERVED1;         
+  __IO uint16_t ODR;          
+  uint16_t RESERVED2;         
+  __IO uint32_t BSRR;         
+  __IO uint32_t LCKR;         
+  __IO uint32_t AFR[2];       
+  __IO uint16_t BRR;          
+  uint16_t RESERVED3;         
+}GPIO_TypeDef;
+
+
+I/O port clock enable register (RCC_IOPENR)
+Address: 0x34
+Reset value: 0x0000 0000    
+
+Bit 0 GPIOAEN: I/O port A clock enable
+This bit is set and cleared by software.
+0: Disable
+1: Enable
+
+0x4002 1000 - 0x4002 13FF 1 KB RCC Section 5.4.1 on page 125
+

@@ -1,0 +1,238 @@
+
+Discarded input sections
+
+ .group         0x0000000000000000        0x8 tmp/init.o
+ .group         0x0000000000000000        0x8 tmp/init.o
+ .group         0x0000000000000000        0x8 tmp/init.o
+ .group         0x0000000000000000        0x8 tmp/init.o
+ .group         0x0000000000000000        0x8 tmp/init.o
+ .group         0x0000000000000000        0x8 tmp/init.o
+ .group         0x0000000000000000        0x8 tmp/init.o
+ .group         0x0000000000000000        0x8 tmp/init.o
+ .text          0x0000000000000000        0x0 tmp/init.o
+ .data          0x0000000000000000        0x0 tmp/init.o
+ .bss           0x0000000000000000        0x0 tmp/init.o
+ .group         0x0000000000000000        0x8 tmp/irq.o
+ .group         0x0000000000000000        0x8 tmp/irq.o
+ .group         0x0000000000000000        0x8 tmp/irq.o
+ .group         0x0000000000000000        0x8 tmp/irq.o
+ .group         0x0000000000000000        0x8 tmp/irq.o
+ .group         0x0000000000000000        0x8 tmp/irq.o
+ .group         0x0000000000000000        0x8 tmp/irq.o
+ .text          0x0000000000000000        0x0 tmp/irq.o
+ .data          0x0000000000000000        0x0 tmp/irq.o
+ .bss           0x0000000000000000        0x0 tmp/irq.o
+ .debug_macro   0x0000000000000000      0x892 tmp/irq.o
+ .debug_macro   0x0000000000000000       0x22 tmp/irq.o
+ .debug_macro   0x0000000000000000       0x87 tmp/irq.o
+ .debug_macro   0x0000000000000000       0x44 tmp/irq.o
+ .debug_macro   0x0000000000000000       0xfd tmp/irq.o
+ .debug_macro   0x0000000000000000       0x5e tmp/irq.o
+ .debug_macro   0x0000000000000000      0x1df tmp/irq.o
+ .group         0x0000000000000000        0x8 tmp/main.o
+ .group         0x0000000000000000        0x8 tmp/main.o
+ .group         0x0000000000000000        0x8 tmp/main.o
+ .group         0x0000000000000000        0x8 tmp/main.o
+ .group         0x0000000000000000        0x8 tmp/main.o
+ .group         0x0000000000000000        0x8 tmp/main.o
+ .group         0x0000000000000000        0x8 tmp/main.o
+ .group         0x0000000000000000        0x8 tmp/main.o
+ .text          0x0000000000000000        0x0 tmp/main.o
+ .data          0x0000000000000000        0x0 tmp/main.o
+ .bss           0x0000000000000000        0x0 tmp/main.o
+ .debug_macro   0x0000000000000000      0x892 tmp/main.o
+ .debug_macro   0x0000000000000000       0x22 tmp/main.o
+ .debug_macro   0x0000000000000000       0x87 tmp/main.o
+ .debug_macro   0x0000000000000000       0x44 tmp/main.o
+ .debug_macro   0x0000000000000000       0xfd tmp/main.o
+ .debug_macro   0x0000000000000000       0x5e tmp/main.o
+ .debug_macro   0x0000000000000000      0x1df tmp/main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000008000000 0x0000000000020000 xr
+RAM              0x0000000020000000 0x0000000000009000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/arm-none-eabi/6.3.1/../../../arm-none-eabi/lib/libnosys.a
+LOAD tmp/init.o
+LOAD tmp/irq.o
+LOAD tmp/main.o
+
+.text           0x0000000008000000      0x1a4
+ *(.vtor)
+ .vtor          0x0000000008000000       0xdc tmp/irq.o
+                0x0000000008000000                VectorTable
+ *(.text*)
+ .text.OnReset  0x00000000080000dc       0x40 tmp/init.o
+                0x00000000080000dc                OnReset
+ .text.OnUnknownFault
+                0x000000000800011c        0x2 tmp/irq.o
+                0x000000000800011c                OnBusFault
+                0x000000000800011c                OnSVCall
+                0x000000000800011c                OnMemoryManagement
+                0x000000000800011c                OnUnknownFault
+                0x000000000800011c                OnSysTick
+                0x000000000800011c                OnUsageFault
+                0x000000000800011c                OnHardFault
+                0x000000000800011c                OnNonMaskableInt
+                0x000000000800011c                OnDebugMonitor
+                0x000000000800011c                OnPendSV
+ .text.OnUnknownIrq
+                0x000000000800011e        0x2 tmp/irq.o
+                0x000000000800011e                OnIrq_UARTE0_UART0
+                0x000000000800011e                OnIrq_MWU
+                0x000000000800011e                OnIrq_RNG
+                0x000000000800011e                OnIrq_SWI5_EGU5
+                0x000000000800011e                OnIrq_GPIOTE
+                0x000000000800011e                OnIrq_SPI2
+                0x000000000800011e                OnIrq_TIMER3
+                0x000000000800011e                OnIrq_SWI1_EGU1
+                0x000000000800011e                OnIrq_RADIO
+                0x000000000800011e                OnIrq_ECB
+                0x000000000800011e                OnIrq_TEMP
+                0x000000000800011e                OnIrq_POWER_CLOCK
+                0x000000000800011e                OnIrq_QDEC
+                0x000000000800011e                OnIrq_SWI4_EGU4
+                0x000000000800011e                OnIrq_CCM_AAR
+                0x000000000800011e                OnIrq_SPI1
+                0x000000000800011e                OnIrq_RTC0
+                0x000000000800011e                OnIrq_SWI3_EGU3
+                0x000000000800011e                OnIrq_PWM2
+                0x000000000800011e                OnIrq_TIMER0
+                0x000000000800011e                OnIrq_PWM0
+                0x000000000800011e                OnIrq_TIMER4
+                0x000000000800011e                OnIrq_PDM
+                0x000000000800011e                OnIrq_RTC2
+                0x000000000800011e                OnIrq_FPU
+                0x000000000800011e                OnIrq_SAADC
+                0x000000000800011e                OnIrq_I2S
+                0x000000000800011e                OnIrq_RTC1
+                0x000000000800011e                OnIrq_COMP_LPCOMP
+                0x000000000800011e                OnIrq_PWM1
+                0x000000000800011e                OnIrq_TIMER2
+                0x000000000800011e                OnIrq_WDT
+                0x000000000800011e                OnIrq_SWI0_EGU0
+                0x000000000800011e                OnIrq_TIMER1
+                0x000000000800011e                OnIrq_SWI2_EGU2
+                0x000000000800011e                OnIrq_NFCT
+                0x000000000800011e                OnIrq_SPI0
+ .text.delay    0x0000000008000120       0x1e tmp/main.o
+                0x0000000008000120                delay
+ *fill*         0x000000000800013e        0x2 
+ .text.main     0x0000000008000140       0x64 tmp/main.o
+                0x0000000008000140                main
+ *(.rodata*)
+                0x00000000080001a4                . = ALIGN (0x4)
+                0x00000000080001a4                __end_of_text__ = .
+
+.glue_7         0x00000000080001a4        0x0
+ .glue_7        0x00000000080001a4        0x0 linker stubs
+
+.glue_7t        0x00000000080001a4        0x0
+ .glue_7t       0x00000000080001a4        0x0 linker stubs
+
+.vfp11_veneer   0x00000000080001a4        0x0
+ .vfp11_veneer  0x00000000080001a4        0x0 linker stubs
+
+.v4_bx          0x00000000080001a4        0x0
+ .v4_bx         0x00000000080001a4        0x0 linker stubs
+
+.iplt           0x00000000080001a4        0x0
+ .iplt          0x00000000080001a4        0x0 tmp/init.o
+
+.rel.dyn        0x00000000080001a4        0x0
+ .rel.iplt      0x00000000080001a4        0x0 tmp/init.o
+
+.data           0x0000000020000000        0x0 load address 0x00000000080001a4
+                0x00000000080001a4                __data_beg_src__ = __end_of_text__
+                0x0000000020000000                __data_beg__ = .
+ *(.data*)
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                __data_end__ = .
+
+.igot.plt       0x0000000020000000        0x0 load address 0x00000000080001a4
+ .igot.plt      0x0000000020000000        0x0 tmp/init.o
+
+.bss            0x0000000020000000        0x0 load address 0x00000000080001a4
+                0x0000000020000000                __bss_beg__ = .
+ *(.bss*)
+                0x0000000020000000                __bss_end__ = .
+                0x0000000020009000                StackTop = (ORIGIN (RAM) + LENGTH (RAM))
+OUTPUT(bin/blinky.elf elf32-littlearm)
+
+.debug_info     0x0000000000000000      0x39f
+ .debug_info    0x0000000000000000      0x10b tmp/init.o
+ .debug_info    0x000000000000010b       0xe7 tmp/irq.o
+ .debug_info    0x00000000000001f2      0x1ad tmp/main.o
+
+.debug_abbrev   0x0000000000000000      0x21b
+ .debug_abbrev  0x0000000000000000       0x99 tmp/init.o
+ .debug_abbrev  0x0000000000000099       0xb1 tmp/irq.o
+ .debug_abbrev  0x000000000000014a       0xd1 tmp/main.o
+
+.debug_loc      0x0000000000000000       0x58
+ .debug_loc     0x0000000000000000       0x58 tmp/init.o
+
+.debug_aranges  0x0000000000000000       0x70
+ .debug_aranges
+                0x0000000000000000       0x20 tmp/init.o
+ .debug_aranges
+                0x0000000000000020       0x28 tmp/irq.o
+ .debug_aranges
+                0x0000000000000048       0x28 tmp/main.o
+
+.debug_ranges   0x0000000000000000       0x40
+ .debug_ranges  0x0000000000000000       0x10 tmp/init.o
+ .debug_ranges  0x0000000000000010       0x18 tmp/irq.o
+ .debug_ranges  0x0000000000000028       0x18 tmp/main.o
+
+.debug_macro    0x0000000000000000      0xe52
+ .debug_macro   0x0000000000000000       0x76 tmp/init.o
+ .debug_macro   0x0000000000000076      0x892 tmp/init.o
+ .debug_macro   0x0000000000000908       0x22 tmp/init.o
+ .debug_macro   0x000000000000092a       0x22 tmp/init.o
+ .debug_macro   0x000000000000094c       0x87 tmp/init.o
+ .debug_macro   0x00000000000009d3       0x44 tmp/init.o
+ .debug_macro   0x0000000000000a17       0xfd tmp/init.o
+ .debug_macro   0x0000000000000b14       0x5e tmp/init.o
+ .debug_macro   0x0000000000000b72      0x1df tmp/init.o
+ .debug_macro   0x0000000000000d51       0x73 tmp/irq.o
+ .debug_macro   0x0000000000000dc4       0x6c tmp/main.o
+ .debug_macro   0x0000000000000e30       0x22 tmp/main.o
+
+.debug_line     0x0000000000000000      0x3d4
+ .debug_line    0x0000000000000000      0x143 tmp/init.o
+ .debug_line    0x0000000000000143      0x131 tmp/irq.o
+ .debug_line    0x0000000000000274      0x160 tmp/main.o
+
+.debug_str      0x0000000000000000     0x337f
+ .debug_str     0x0000000000000000     0x321a tmp/init.o
+                                       0x337e (size before relaxing)
+ .debug_str     0x000000000000321a       0x77 tmp/irq.o
+                                       0x334d (size before relaxing)
+ .debug_str     0x0000000000003291       0xee tmp/main.o
+                                       0x33db (size before relaxing)
+
+.comment        0x0000000000000000       0x31
+ .comment       0x0000000000000000       0x31 tmp/init.o
+                                         0x32 (size before relaxing)
+ .comment       0x0000000000000031       0x32 tmp/irq.o
+ .comment       0x0000000000000031       0x32 tmp/main.o
+
+.ARM.attributes
+                0x0000000000000000       0x32
+ .ARM.attributes
+                0x0000000000000000       0x32 tmp/init.o
+ .ARM.attributes
+                0x0000000000000032       0x32 tmp/irq.o
+ .ARM.attributes
+                0x0000000000000064       0x32 tmp/main.o
+
+.debug_frame    0x0000000000000000       0x94
+ .debug_frame   0x0000000000000000       0x28 tmp/init.o
+ .debug_frame   0x0000000000000028       0x30 tmp/irq.o
+ .debug_frame   0x0000000000000058       0x3c tmp/main.o
